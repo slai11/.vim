@@ -1,0 +1,1 @@
+/Users/sylvesterchin/dotfiles/colors/monokai.vim
