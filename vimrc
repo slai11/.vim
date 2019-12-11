@@ -130,12 +130,15 @@ let g:go_highlight_extra_types = 0
 let g:go_highlight_operators = 0
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_autosave = 1
-let g:go_def_mode = "godef"
+let g:go_def_mode = "gopls"
+let g:go_rename_mode = "gopls"
+let g:go_bin_path = $HOME."/go/bin"
+let $GOPATH = $HOME."/go"
 
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>d <Plug>(go-def)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+au FileType go nmap <Leader>d <Plug>(go-def)
 
 au FileType go nmap <Leader>gi <Plug>(go-info)
 au FileType go nmap <Leader>l <Plug>(go-metalinter)
