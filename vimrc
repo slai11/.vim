@@ -85,10 +85,11 @@ let g:mapleader = ","
 call plug#begin("~/.vim/plugged")
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'junegunn/fzf'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'ntpeters/vim-better-whitespace'
 " Initialize plugin system
 call plug#end()
 
@@ -150,4 +151,10 @@ let g:remoteSession = ($STY == "")
 if !g:remoteSession
   let g:airline_powerline_fonts=1
 endif
+
+" ========= vim-better-whitespace ==================
+
+" auto strip whitespace except for file with extention blacklisted
+let blacklist = ['diff', 'gitcommit', 'unite', 'qf', 'help', 'markdown']
+autocmd BufWritePre * if index(blacklist, &ft) < 0 | StripWhitespace
 
