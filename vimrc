@@ -74,8 +74,6 @@ if has('mouse')
 endif
 
 
-colorscheme Tomorrow-Night
-
 " This comes first, because we have mappings that depend on leader
 " With a map leader it's possible to do extra key combinations
 " i.e: <leader>w saves the current file
@@ -90,8 +88,27 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'ntpeters/vim-better-whitespace'
+
+" Colors
+Plug 'junegunn/seoul256.vim'
+Plug 'tomasr/molokai'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'morhetz/gruvbox'
+Plug 'yuttie/hydrangea-vim'
+Plug 'tyrannicaltoucan/vim-deep-space'
+Plug 'AlessandroYorba/Despacio'
+Plug 'cocopon/iceberg.vim'
+Plug 'w0ng/vim-hybrid'
+Plug 'nightsense/snow'
+Plug 'nightsense/stellarized'
+Plug 'arcticicestudio/nord-vim'
+Plug 'nightsense/cosmic_latte'
 " Initialize plugin system
 call plug#end()
+
+" =================== color ======================
+colo seoul256
+set background=dark
 
 " ==================== fzf =======================
 " Using floating windows of Neovim to start fzf
