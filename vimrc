@@ -80,6 +80,10 @@ endif
 let mapleader = ","
 let g:mapleader = ","
 
+" Fast saving
+nmap <leader>w :w!<cr>
+
+" ============== Plugs======================
 call plug#begin("~/.vim/plugged")
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -116,6 +120,8 @@ set background=dark
 if has('nvim') || has('gui_running')
   let $FZF_DEFAULT_OPTS .= ' --inline-info'
 endif
+
+nmap <Leader>rg :Rg<cr>
 
 " ==================== Vim-go ====================
 let g:go_fmt_fail_silently = 1
