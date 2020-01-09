@@ -122,6 +122,7 @@ if has('nvim') || has('gui_running')
 endif
 
 nmap <Leader>rg :Rg<cr>
+nmap <Leader>f :Files<cr>
 
 " ==================== Vim-go ====================
 let g:go_fmt_fail_silently = 1
@@ -159,7 +160,7 @@ au FileType go nmap <Leader>e <Plug>(go-rename)
 " For toggling
 nmap <C-n> :NERDTreeToggle<CR>
 noremap <Leader>n :NERDTreeToggle<cr>
-noremap <Leader>f :NERDTreeFind<cr>
+"noremap <Leader>f :NERDTreeFind<cr>
 
 let NERDTreeShowHidden=1
 
