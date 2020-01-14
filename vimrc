@@ -82,7 +82,7 @@ let g:mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
-
+nmap <leader>q :q<cr>
 " ============== Plugs======================
 call plug#begin("~/.vim/plugged")
 Plug 'vim-airline/vim-airline'
