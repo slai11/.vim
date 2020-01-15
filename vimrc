@@ -3,6 +3,9 @@
 "
 syntax on
 
+" maps `jj` to escape key - must be pressed quickly
+imap jj <Esc>
+
 set noerrorbells                " No beeps
 set number                      " Show line numbers
 set backspace=indent,eol,start  " Makes backspace key more powerful.
