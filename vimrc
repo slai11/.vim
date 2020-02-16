@@ -3,8 +3,8 @@
 "
 syntax on
 
-" maps `jj` to escape key - must be pressed quickly
-imap jj <Esc>
+" maps `jk` to escape key - must be pressed quickly
+imap jk <Esc>
 
 set noerrorbells                " No beeps
 set number                      " Show line numbers
@@ -86,6 +86,8 @@ let g:mapleader = ","
 " Fast saving
 nmap <leader>w :w!<cr>
 nmap <leader>q :q<cr>
+nmap <Leader>wq :wq<cr>
+
 " ============== Plugs======================
 call plug#begin("~/.vim/plugged")
 Plug 'vim-airline/vim-airline'
@@ -93,8 +95,12 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'Raimondi/delimitMate'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'godlygeek/tabular'
 
 " Colors
 Plug 'junegunn/seoul256.vim'
@@ -159,18 +165,11 @@ au FileType go nmap <leader>gtc  <Plug>(go-test-compile)
 au FileType go nmap <Leader>gdoc <Plug>(go-doc)
 au FileType go nmap <Leader>e <Plug>(go-rename)
 
-"==================== NerdTree ====================
-" For toggling
-nmap <C-n> :NERDTreeToggle<CR>
-noremap <Leader>n :NERDTreeToggle<cr>
-"noremap <Leader>f :NERDTreeFind<cr>
-
-let NERDTreeShowHidden=1
-
-let NERDTreeIgnore=['\.vim$', '\~$', '\.git$', '.DS_Store']
-
-" Close nerdtree and vim on close file
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" ===== jistr/vim=nerdtree=tabs ========================
+" Open/close NERDTree Tabs with \t
+nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
+" To have NERDTree always open on startup
+let g:nerdtree_tabs_open_on_console_startup = 1
 
 " =================== vim-airline ========================
 
@@ -188,3 +187,12 @@ endif
 let blacklist = ['diff', 'gitcommit', 'unite', 'qf', 'help', 'markdown']
 autocmd BufWritePre * if index(blacklist, &ft) < 0 | StripWhitespace
 
+" ===== Raimondi/delimitMate settings =====
+let delimitMate_expand_cr = 1
+augroup mydelimitMate
+  au!
+  au FileType markdown let b:delimitMate_nesting_quotes = ["`"]
+  au FileType tex let b:delimitMate_quotes = ""
+  au FileType tex let b:delimitMate_matchpairs = "(:),[:],{:},`:'"
+  au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
+augroup END
