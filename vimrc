@@ -102,6 +102,11 @@ Plug 'Raimondi/delimitMate'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'godlygeek/tabular'
 
+
+" ---- Git stuff ----
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
 " Colors
 Plug 'junegunn/seoul256.vim'
 Plug 'tomasr/molokai'
@@ -196,3 +201,7 @@ augroup mydelimitMate
   au FileType tex let b:delimitMate_matchpairs = "(:),[:],{:},`:'"
   au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
 augroup END
+
+" ===== airblade/vim=gitgutter settings =====
+" In vim-airline, only display "hunks" if the diff is non-zero
+let g:airline#extensions#hunks#non_zero_only = 1
