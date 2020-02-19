@@ -88,6 +88,23 @@ nmap <leader>w :w!<cr>
 nmap <leader>q :q<cr>
 nmap <Leader>wq :wq<cr>
 
+" Moving betweent tabs
+nnoremap H gT
+nnoremap L gt
+
+" Go to tab by number
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
+
+
 " ============== Plugs======================
 call plug#begin("~/.vim/plugged")
 Plug 'vim-airline/vim-airline'
@@ -137,6 +154,14 @@ endif
 
 nmap <Leader>rg :Rg<cr>
 nmap <Leader>f :Files<cr>
+
+let g:fzf_action = {
+  \ 'ctrl-m': 'tabedit',
+  \ 'ctrl-e': 'edit',
+  \ 'ctrl-v': 'vsplit',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-r': 'read',
+\}
 
 " ==================== Vim-go ====================
 let g:go_fmt_fail_silently = 1
