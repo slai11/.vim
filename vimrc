@@ -102,6 +102,12 @@ Plug 'Raimondi/delimitMate'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'godlygeek/tabular'
 
+" ---- Language Server ----
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
 
 " ---- Git stuff ----
 Plug 'airblade/vim-gitgutter'
@@ -205,3 +211,16 @@ augroup END
 " ===== airblade/vim=gitgutter settings =====
 " In vim-airline, only display "hunks" if the diff is non-zero
 let g:airline#extensions#hunks#non_zero_only = 1
+
+
+let g:LanguageClient_autoStop = 0
+let g:LanguageClient_serverCommands = {
+    \ 'ruby': ['solargraph', 'stdio']
+    \ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
