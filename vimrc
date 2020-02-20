@@ -42,9 +42,9 @@ set nocursorline
 
 " Make Vim to handle long lines nicely.
 set wrap
-set textwidth=79
+set textwidth=80
 set formatoptions=qrn1
-"set colorcolumn=79
+set colorcolumn=120
 "set relativenumber
 "set norelativenumber
 
@@ -160,6 +160,7 @@ endif
 
 nmap <Leader>rg :Rg<cr>
 nmap <Leader>f :Files<cr>
+nnoremap <silent> <Leader>F :Rg <C-R><C-W><CR>
 
 let g:fzf_action = {
   \ 'ctrl-m': 'tabedit',
@@ -245,7 +246,7 @@ let g:LanguageClient_serverCommands = {
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition({'gotoCmd': 'split'})<CR>
+nnoremap <silent> gs :call LanguageClient#textDocument_definition({'gotoCmd': 'split'})<CR>
 autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
