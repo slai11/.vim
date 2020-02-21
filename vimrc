@@ -119,6 +119,11 @@ Plug 'Raimondi/delimitMate'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'godlygeek/tabular'
 
+" ---- Tags ----
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
+Plug 'majutsushi/tagbar'
+
 " ---- Language Server ----
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -250,3 +255,19 @@ nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 nnoremap <silent> gs :call LanguageClient#textDocument_definition({'gotoCmd': 'split'})<CR>
 autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
+
+" ----- xolox/vim-easytags settings -----
+" Where to look for tags files
+set tags=./tags;,~/.vimtags
+" Sensible defaults
+let g:easytags_events = ['BufReadPost', 'BufWritePost']
+let g:easytags_async = 1
+let g:easytags_dynamic_files = 2
+let g:easytags_resolve_links = 1
+let g:easytags_suppress_ctags_warning = 1
+
+" ----- majutsushi/tagbar settings -----
+" Open/close tagbar with \b
+nmap <silent> <leader>b :TagbarToggle<CR>
+" Uncomment to open tagbar automatically whenever possible
+"autocmd BufEnter * nested :call tagbar#autoopen(0)
