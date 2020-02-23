@@ -118,6 +118,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'Raimondi/delimitMate'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'godlygeek/tabular'
+Plug 'kchmck/vim-coffee-script'
 
 " ---- Tags ----
 Plug 'xolox/vim-misc'
@@ -154,7 +155,6 @@ call plug#end()
 
 " =================== color ======================
 colo seoul256
-set background=dark
 
 " ==================== fzf =======================
 " Using floating windows of Neovim to start fzf
