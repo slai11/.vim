@@ -45,7 +45,7 @@ set wrap
 set textwidth=80
 set formatoptions=qrn1
 set colorcolumn=120
-"set relativenumber
+set relativenumber
 "set norelativenumber
 
 set autoindent
