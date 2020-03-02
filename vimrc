@@ -119,6 +119,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'godlygeek/tabular'
 Plug 'kchmck/vim-coffee-script'
+Plug 'tpope/vim-surround'
 
 " ---- Tags ----
 Plug 'xolox/vim-misc'
@@ -255,6 +256,7 @@ nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 nnoremap <silent> gs :call LanguageClient#textDocument_definition({'gotoCmd': 'split'})<CR>
 autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
+inoremap <silent> <buffer> <C-g><C-o> <C-x><C-o>
 
 " ----- xolox/vim-easytags settings -----
 " Where to look for tags files
