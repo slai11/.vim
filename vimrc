@@ -157,6 +157,7 @@ call plug#end()
 
 " =================== color ======================
 colorscheme nord
+set termguicolors
 
 " ==================== fzf =======================
 " Using floating windows of Neovim to start fzf
