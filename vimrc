@@ -6,6 +6,8 @@ syntax on
 " maps `jk` to escape key - must be pressed quickly
 imap jk <Esc>
 
+set clipboard=unnamed
+
 set noerrorbells                " No beeps
 set number                      " Show line numbers
 set backspace=indent,eol,start  " Makes backspace key more powerful.
@@ -125,6 +127,7 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'godlygeek/tabular'
 Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-surround'
+Plug 'terryma/vim-multiple-cursors'
 
 " ---- Tags ----
 Plug 'xolox/vim-misc'
@@ -146,21 +149,14 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/seoul256.vim'
 Plug 'tomasr/molokai'
 Plug 'chriskempson/vim-tomorrow-theme'
-Plug 'morhetz/gruvbox'
-Plug 'yuttie/hydrangea-vim'
-Plug 'tyrannicaltoucan/vim-deep-space'
-Plug 'AlessandroYorba/Despacio'
-Plug 'cocopon/iceberg.vim'
 Plug 'w0ng/vim-hybrid'
-Plug 'nightsense/snow'
-Plug 'nightsense/stellarized'
 Plug 'arcticicestudio/nord-vim'
-Plug 'nightsense/cosmic_latte'
+
 " Initialize plugin system
 call plug#end()
 
 " =================== color ======================
-colo seoul256
+colorscheme nord
 
 " ==================== fzf =======================
 " Using floating windows of Neovim to start fzf
