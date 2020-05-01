@@ -128,6 +128,7 @@ Plug 'godlygeek/tabular'
 Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'rust-lang/rust.vim'
 
 " ---- Tags ----
 Plug 'xolox/vim-misc'
@@ -249,6 +250,7 @@ let g:airline#extensions#hunks#non_zero_only = 1
 
 let g:LanguageClient_autoStop = 0
 let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ 'ruby': ['solargraph', 'stdio']
     \ }
 
@@ -258,6 +260,7 @@ nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 nnoremap <silent> gs :call LanguageClient#textDocument_definition({'gotoCmd': 'split'})<CR>
 autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
+autocmd FileType rust setlocal omnifunc=LanguageClient#complete
 inoremap <silent> <buffer> <C-g><C-o> <C-x><C-o>
 
 " ----- xolox/vim-easytags settings -----
@@ -275,3 +278,6 @@ let g:easytags_suppress_ctags_warning = 1
 nmap <silent> <leader>b :TagbarToggle<CR>
 " Uncomment to open tagbar automatically whenever possible
 "autocmd BufEnter * nested :call tagbar#autoopen(0)
+
+" ----- vim rust -----
+let g:rustfmt_autosave = 1
