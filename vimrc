@@ -134,6 +134,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-easytags'
 Plug 'majutsushi/tagbar'
+Plug 'christoomey/vim-tmux-navigator'
 
 " ---- COC ----
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
