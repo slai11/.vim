@@ -155,7 +155,7 @@ Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 " =================== color ======================
-colorscheme nord
+colorscheme tomorrow-night-eighties
 set termguicolors
 
 " ==================== fzf =======================
