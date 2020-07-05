@@ -150,12 +150,14 @@ Plug 'tomasr/molokai'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'w0ng/vim-hybrid'
 Plug 'arcticicestudio/nord-vim'
-
+Plug 'dracula/vim', { 'as': 'dracula' }
 " Initialize plugin system
 call plug#end()
 
 " =================== color ======================
-colorscheme tomorrow-night-eighties
+"colorscheme tomorrow-night-eighties
+colorscheme dracula
+
 set termguicolors
 
 " ==================== fzf =======================
