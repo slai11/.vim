@@ -151,12 +151,15 @@ Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'w0ng/vim-hybrid'
 Plug 'arcticicestudio/nord-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'jacoborus/tender.vim'
+Plug 'nanotech/jellybeans.vim'
 " Initialize plugin system
 call plug#end()
 
 " =================== color ======================
-"colorscheme tomorrow-night-eighties
-colorscheme dracula
+colorscheme tender
+
+let g:dracula_italic = 0
 
 set termguicolors
 
