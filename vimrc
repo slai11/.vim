@@ -153,13 +153,15 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'jacoborus/tender.vim'
 Plug 'nanotech/jellybeans.vim'
+Plug 'joshdick/onedark.vim'
 " Initialize plugin system
 call plug#end()
 
 " =================== color ======================
 colorscheme tender
 
-let g:dracula_italic = 0
+highlight clear LineNr
+
 
 set termguicolors
 
