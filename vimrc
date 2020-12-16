@@ -154,11 +154,12 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'jacoborus/tender.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'joshdick/onedark.vim'
+Plug 'sainnhe/forest-night'
 " Initialize plugin system
 call plug#end()
 
 " =================== color ======================
-colorscheme tender
+colorscheme forest-night
 
 highlight clear LineNr
 
