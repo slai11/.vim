@@ -163,7 +163,7 @@ Plug 'drewtempelmeyer/palenight.vim'
 call plug#end()
 
 " =================== color ======================
-colorscheme palenight
+colorscheme jellybeans
 
 
 highlight clear LineNr
