@@ -147,6 +147,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " ---- Git stuff ----
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'github/copilot.vim'
 
 " Colors
 Plug 'junegunn/seoul256.vim'
