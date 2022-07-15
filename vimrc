@@ -133,6 +133,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'vim-syntastic/syntastic'
 Plug 'juliosueiras/vim-terraform-completion'
 Plug 'elzr/vim-json'
+Plug 'tomlion/vim-solidity'
 
 " ---- Tags ----
 Plug 'xolox/vim-misc'
@@ -143,11 +144,9 @@ Plug 'christoomey/vim-tmux-navigator'
 " ---- COC ----
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-
 " ---- Git stuff ----
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'github/copilot.vim'
 
 " Colors
 Plug 'junegunn/seoul256.vim'
