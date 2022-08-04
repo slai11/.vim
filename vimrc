@@ -15,7 +15,7 @@ set showcmd                     " Show me what I'm typing
 set showmode                    " Show current mode.
 
 set noswapfile                  " Don't use swapfile
-set nobackup					          " Don't create annoying backup files
+set nobackup					" Don't create annoying backup files
 set nowritebackup
 set splitright                  " Split vertical windows right to the current windows
 set splitbelow                  " Split horizontal windows below to the current windows
@@ -149,25 +149,17 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 " Colors
-Plug 'junegunn/seoul256.vim'
-Plug 'tomasr/molokai'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'w0ng/vim-hybrid'
-Plug 'arcticicestudio/nord-vim'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'jacoborus/tender.vim'
 Plug 'nanotech/jellybeans.vim'
-Plug 'joshdick/onedark.vim'
 Plug 'drewtempelmeyer/palenight.vim'
 " Initialize plugin system
 call plug#end()
 
 " =================== color ======================
-colorscheme jellybeans
-
+colorscheme palenight
 
 highlight clear LineNr
-
 
 set termguicolors
 
