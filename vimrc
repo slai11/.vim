@@ -3,9 +3,6 @@
 "
 syntax on
 
-" maps `jk` to escape key - must be pressed quickly
-imap jk <Esc>
-
 set clipboard=unnamed
 
 set noerrorbells                " No beeps
@@ -120,39 +117,39 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'Raimondi/delimitMate'
-Plug 'ekalinin/Dockerfile.vim'
 Plug 'godlygeek/tabular'
-Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'rust-lang/rust.vim'
-Plug 'hashivim/vim-terraform'
 Plug 'vim-syntastic/syntastic'
-Plug 'juliosueiras/vim-terraform-completion'
-Plug 'elzr/vim-json'
-Plug 'tomlion/vim-solidity'
-
-" ---- Tags ----
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
-Plug 'majutsushi/tagbar'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'jdhao/better-escape.vim'
+Plug 'dstein64/vim-startuptime'
 
-" ---- COC ----
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Lang
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'rust-lang/rust.vim'
+Plug 'google/vim-jsonnet'
 
-" ---- Git stuff ----
+" Config Lang
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'elzr/vim-json'
+Plug 'stephpy/vim-yaml'
+Plug 'juliosueiras/vim-terraform-completion'
+Plug 'hashivim/vim-terraform'
+Plug 'pedrohdz/vim-yaml-folds'
+
+" Git stuff
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 " Colors
-Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'w0ng/vim-hybrid'
 Plug 'nanotech/jellybeans.vim'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'morhetz/gruvbox'
+
 " Initialize plugin system
 call plug#end()
 
@@ -162,6 +159,10 @@ colorscheme palenight
 highlight clear LineNr
 
 set termguicolors
+
+" ==================== better-escape =======================
+" use jj to escape insert mode.
+let g:better_escape_shortcut = 'jk'
 
 " ==================== fzf =======================
 " Using floating windows of Neovim to start fzf
@@ -182,6 +183,8 @@ let g:fzf_action = {
   \ 'ctrl-r': 'read',
 \}
 
+let g:fzf_layout = { 'down': '40%' }
+
 " ==================== Vim-go ====================
 let g:go_fmt_fail_silently = 1
 let g:go_fmt_command = "goimports"
@@ -200,16 +203,11 @@ let g:go_rename_mode = "gopls"
 let g:go_bin_path = $HOME."/go/bin"
 let $GOPATH = $HOME."/go"
 
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
-au FileType go nmap <Leader>d <Plug>(go-def)
-
-au FileType go nmap <Leader>gi <Plug>(go-info)
+au FileType go nmap <silent>gd <Plug>(go-def)
+au FileType go nmap <silent>gt  <Plug>(go-test)
 au FileType go nmap <Leader>l <Plug>(go-metalinter)
 au FileType go nmap <leader>gr  <Plug>(go-run)
 au FileType go nmap <leader>gb  <Plug>(go-build)
-au FileType go nmap <leader>gt  <Plug>(go-test)
 au FileType go nmap <leader>gtc  <Plug>(go-test-compile)
 au FileType go nmap <Leader>gdoc <Plug>(go-doc)
 au FileType go nmap <Leader>e <Plug>(go-rename)
@@ -218,7 +216,7 @@ au FileType go nmap <Leader>e <Plug>(go-rename)
 " Open/close NERDTree Tabs with \t
 nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
 " To have NERDTree always open on startup
-let g:nerdtree_tabs_open_on_console_startup = 1
+let g:nerdtree_tabs_open_on_console_startup = 0
 
 " =================== vim-airline ========================
 
@@ -231,10 +229,7 @@ if !g:remoteSession
 endif
 
 " ========= vim-better-whitespace ==================
-
-" auto strip whitespace except for file with extention blacklisted
-let blacklist = ['diff', 'gitcommit', 'unite', 'qf', 'help', 'markdown']
-autocmd BufWritePre * if index(blacklist, &ft) < 0 | StripWhitespace
+let g:strip_whitespace_on_save = 1
 
 " ===== Raimondi/delimitMate settings =====
 let delimitMate_expand_cr = 1
@@ -250,55 +245,8 @@ augroup END
 " In vim-airline, only display "hunks" if the diff is non-zero
 let g:airline#extensions#hunks#non_zero_only = 1
 
-" ----- xolox/vim-easytags settings -----
-" Where to look for tags files
-set tags=./tags;,~/.vimtags
-" Sensible defaults
-let g:easytags_events = ['BufReadPost', 'BufWritePost']
-let g:easytags_async = 1
-let g:easytags_dynamic_files = 2
-let g:easytags_resolve_links = 1
-let g:easytags_suppress_ctags_warning = 1
-
-" ----- majutsushi/tagbar settings -----
-" Open/close tagbar with \b
-nmap <silent> <leader>b :TagbarToggle<CR>
-" Uncomment to open tagbar automatically whenever possible
-"autocmd BufEnter * nested :call tagbar#autoopen(0)
-
 " ----- vim rust -----
 let g:rustfmt_autosave = 1
-
-" ----- CoC ------
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " ------- vim-terraform ---------
 let g:terraform_align=1
@@ -315,3 +263,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+
+" -- vim-yaml
+let g:yaml_limit_spell = 1
