@@ -165,13 +165,13 @@ Plug 'w0ng/vim-hybrid'
 Plug 'nanotech/jellybeans.vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'morhetz/gruvbox'
-Plug 'arcticicestudio/nord-vim'
+Plug 'rmehri01/onenord.nvim', { 'branch': 'main' }
 
 " Initialize plugin system
 call plug#end()
 
 " =================== color ======================
-colorscheme palenight
+colorscheme onenord
 
 highlight clear LineNr
 
