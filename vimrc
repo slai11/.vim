@@ -184,7 +184,15 @@ nnoremap <leader>rg <cmd>Telescope live_grep<cr>
 nnoremap <leader>F <cmd>Telescope grep_string<cr>
 
 lua << EOF
+local actions = require("telescope.actions")
 require('telescope').setup{
+  defaults = {
+    mappings = {
+      i = {
+          ["<cr>"] = actions.select_tab,
+      },
+    },
+  },
   pickers = {
     find_files = {
       theme = "ivy",
