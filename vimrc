@@ -117,8 +117,11 @@ nmap <S-tab> <<
 " ============== Plugs======================
 call plug#begin("~/.vim/plugged")
 Plug 'itchyny/lightline.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+
+" Fuzzy find
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " File browser with git indicators
 Plug 'preservim/nerdtree'
@@ -174,30 +177,32 @@ highlight clear LineNr
 
 set termguicolors
 
+" ================= telescope ===============
+" Find files using Telescope command-line sugar.
+nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>rg <cmd>Telescope live_grep<cr>
+nnoremap <leader>F <cmd>Telescope grep_string<cr>
+
+lua << EOF
+require('telescope').setup{
+  pickers = {
+    find_files = {
+      theme = "ivy",
+    },
+    live_grep = {
+      theme = "ivy",
+    },
+    grep_string = {
+      theme = "ivy",
+    },
+  },
+}
+EOF
+
+
 " ==================== better-escape =======================
 " use jj to escape insert mode.
 let g:better_escape_shortcut = 'jk'
-
-" ==================== fzf =======================
-" Using floating windows of Neovim to start fzf
-
-if has('nvim') || has('gui_running')
-  let $FZF_DEFAULT_OPTS .= ' --inline-info'
-endif
-
-nmap <Leader>rg :Rg<cr>
-nmap <Leader>f :Files<cr>
-nnoremap <silent> <Leader>F :Rg <C-R><C-W><CR>
-
-let g:fzf_action = {
-  \ 'ctrl-m': 'tabedit',
-  \ 'ctrl-e': 'edit',
-  \ 'ctrl-v': 'vsplit',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-r': 'read',
-\}
-
-let g:fzf_layout = { 'down': '40%' }
 
 " Configure language server
 " https://github.com/neovim/nvim-lspconfig#keybindings-and-completion
@@ -245,6 +250,7 @@ require('lspconfig')['gopls'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
+require'lspconfig'.jsonnet_ls.setup{}
 
 EOF
 
